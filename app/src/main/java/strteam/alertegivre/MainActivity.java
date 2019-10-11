@@ -1,8 +1,6 @@
 package strteam.alertegivre;
-import android.content.Intent;
-import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import androidx.appcompat.app.AppCompatActivity;
 import pl.droidsonroids.gif.GifTextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,7 +109,16 @@ public class MainActivity extends AppCompatActivity {
                         while ((line  = reader.readLine())!=null){
                             buffer.append(line);
                         }
-                        minfosmeteo.setText(buffer.toString());
+
+                        if (buffer.toString().compareTo("1")==0)
+                        {
+                            minfosmeteo.setText("Le rapport a bien été inséré dans la base de données");
+                        }
+                        else
+                        {
+                            minfosmeteo.setText("erreur d'insertion du rapport dans la base de données");
+                        }
+
 
                     } catch (IOException e) {
                         e.printStackTrace();
