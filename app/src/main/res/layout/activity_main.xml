@@ -11,19 +11,20 @@
 
     <Button
         android:id="@+id/btnpasdgivre"
-        android:layout_width="195dp"
+        android:layout_width="170dp"
         android:layout_height="30dp"
+        android:layout_margin="10dp"
         android:layout_weight="0.06"
         android:background="#26b5a6"
         android:text="Pas de givre" />
 
     <Button
         android:id="@+id/btnsignalgivre"
-        android:layout_width="190dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_weight="0.18"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_gravity="left"
+        android:layout_margin="10dp"
+        android:layout_weight="0.06"
         android:background="#26b5a6"
         android:text="Signaler du givre" />
 
