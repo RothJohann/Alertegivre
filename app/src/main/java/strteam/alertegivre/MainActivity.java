@@ -112,11 +112,61 @@ public class MainActivity extends AppCompatActivity {
 
                         if (buffer.toString().compareTo("1")==0)
                         {
-                            minfosmeteo.setText("Le rapport a bien été inséré dans la base de données");
+                            minfosmeteo.setText("Le rapport a bien été inséré dans la base de données(givre présent)");
                         }
                         else
                         {
-                            minfosmeteo.setText("erreur d'insertion du rapport dans la base de données");
+                            minfosmeteo.setText("Erreur d'insertion du rapport dans la base de données");
+                        }
+
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }finally{
+                    if (connection != null)
+                        connection.disconnect();
+                    try {
+                        if (reader !=null)
+                            reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+
+            } //fin du onclick }
+        });
+        mbuttonpasdgivre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                HttpURLConnection connection = null;
+                BufferedReader reader = null;
+                try {
+                    URL url =new URL("http://alertegivre.hopto.org:8080/meteo/rapporterfalse.php");
+                    try {
+                        connection = (HttpURLConnection) url.openConnection();
+                        connection.connect();
+                        InputStream stream = connection.getInputStream();
+                        reader = new BufferedReader(new InputStreamReader(stream));
+                        StringBuffer buffer = new StringBuffer();
+
+                        String line = "";
+                        while ((line  = reader.readLine())!=null){
+                            buffer.append(line);
+                        }
+
+                        if (buffer.toString().compareTo("1")==0)
+                        {
+                            minfosmeteo.setText("Le rapport a bien été inséré dans la base de données(pas de givre)");
+                        }
+                        else
+                        {
+                            minfosmeteo.setText("Erreur d'insertion du rapport dans la base de données");
                         }
 
 
@@ -143,4 +193,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     } //fin de ce qu'on fait au démarrage }
-} //fin de l'activity }
+} //fin de l'activité }
