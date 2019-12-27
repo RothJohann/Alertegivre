@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 HttpURLConnection connection = null;
                 BufferedReader reader = null;
                 try {
-                    URL url =new URL("http://alertegivre.hopto.org:8080/meteo/rapporter.php");
+                    URL url =new URL("http://alertegivre.hopto.org:8080/meteo/rapporter.php?givre=1");
                     try {
                         connection = (HttpURLConnection) url.openConnection();
                         connection.connect();
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 HttpURLConnection connection = null;
                 BufferedReader reader = null;
                 try {
-                    URL url =new URL("http://alertegivre.hopto.org:8080/meteo/rapporterfalse.php");
+                    URL url =new URL("http://alertegivre.hopto.org:8080/meteo/rapporter.php?givre=0");
                     try {
                         connection = (HttpURLConnection) url.openConnection();
                         connection.connect();
